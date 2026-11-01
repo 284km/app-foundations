@@ -1,0 +1,31 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories:
+      - /
+      - /starters/web
+      - /starters/mobile
+      - /starters/desktop
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      mobile-runtime:
+        patterns: ["expo", "expo-*", "@expo/*", "react-native", "react", "react-dom", "@types/react", "@types/react-dom", "typescript"]
+        update-types: ["minor", "patch"]
+      compatible-patches:
+        patterns: ["*"]
+        update-types: ["patch"]
+  - package-ecosystem: cargo
+    directory: /starters/desktop/src-tauri
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+  - package-ecosystem: docker-compose
+    directory: /starters/web
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

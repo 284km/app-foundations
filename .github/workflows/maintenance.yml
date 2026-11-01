@@ -1,0 +1,27 @@
+name: Monthly maintenance review
+on:
+  schedule:
+    - cron: '17 3 1 * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Open one public review reminder
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          existing=$(gh issue list --state open --search 'in:title "Maintenance review"' --json number --jq 'length')
+          if [ "$existing" -gt 0 ]; then exit 0; fi
+          cat > "$RUNNER_TEMP/review-body.md" <<'BODY'
+          Review official releases, support windows, advisories, conditional decisions, deferred alternatives, English/Japanese consistency, starter exports, and validation gaps.
+
+          Record public sources and reproducible evidence. Do not include private URLs, real data, credentials, logs, or local machine identifiers. Architecture changes require a reviewed ADR and migration guidance; this reminder does not approve them.
+          BODY
+          gh issue create --title "Maintenance review: $(date -u +%Y-%m)" --body-file "$RUNNER_TEMP/review-body.md"

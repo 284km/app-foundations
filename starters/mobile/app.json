@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "Foundations Notes",
+    "slug": "foundations-notes",
+    "version": "0.1.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "org.example.foundations.notes",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "org.example.foundations.notes"
+    }
+  }
+}
