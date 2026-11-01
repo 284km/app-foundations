@@ -4,15 +4,39 @@ updates:
     directories:
       - /
       - /starters/web
-      - /starters/mobile
       - /starters/desktop
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # The runtime and .nvmrc target Node 24. Migrate them together before lifting this cap.
+      - dependency-name: "@types/node"
+        versions: [">=25.0.0"]
+    groups:
+      compatible-patches:
+        patterns: ["*"]
+        update-types: ["patch"]
+  - package-ecosystem: npm
+    directory: /starters/mobile
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    ignore:
+      - dependency-name: "@types/node"
+        versions: [">=25.0.0"]
+      # Expo 58.0.22 requires these exact React/native versions and the TS 6.0 patch line.
+      # Revisit these caps in each Expo SDK/toolchain upgrade after expo install --fix/--check.
+      - dependency-name: react
+        versions: [">19.3.0"]
+      - dependency-name: react-dom
+        versions: [">19.3.0"]
+      - dependency-name: react-native
+        versions: [">0.88.1"]
+      - dependency-name: typescript
+        versions: [">=6.1.0"]
     groups:
       mobile-runtime:
         patterns: ["expo", "expo-*", "@expo/*", "react-native", "react", "react-dom", "@types/react", "@types/react-dom", "typescript"]
-        update-types: ["minor", "patch"]
       compatible-patches:
         patterns: ["*"]
         update-types: ["patch"]

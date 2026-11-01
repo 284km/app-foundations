@@ -9,3 +9,5 @@ To report a vulnerability, use the repository's GitHub private vulnerability rep
 If a secret is exposed, revoke/rotate it first, stop further publication, then assess history and artifact cleanup. Deleting a file or rewriting history does not revoke a credential or guarantee removal of public copies.
 
 The public-content checker, Gitleaks, and manual review are complementary controls. Passing scans is not a guarantee that all confidential information has been identified.
+
+Dependency compatibility caps may prevent automatic security PRs when a fix requires an unsupported SDK/runtime version. Keep advisory alerts enabled, assess them promptly, and perform a coordinated upgrade when required. See the [maintenance guide](docs/en/guides/maintenance.md). A missing update PR is not evidence that all dependencies are safe.
