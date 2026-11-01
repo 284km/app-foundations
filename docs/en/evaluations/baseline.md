@@ -15,7 +15,7 @@ Local environment: macOS on Apple Silicon, Node.js 24.14.1, and Rust 1.99.1 for 
 | Native desktop release build | Passed on macOS arm64 |
 | REST CRUD, errors, CORS and schema tests with PostgreSQL | Passed; production demo blocking also checked |
 | Standalone exports, contract drift and bilingual checks | Passed for all three starters; 10 document pairs checked |
-| Public source and Git history scans | Pending final validation |
+| Public source and Git history scans | Passed: 107 tracked text files reviewed; Gitleaks snapshot/history scans found no leaks |
 
 The CI definition covers repository checks, exported starters, API tests, production demo blocking, and native desktop builds on Linux/macOS/Windows. A configured job is not a passed job; inspect actual successful runs. Exported apps receive a basic typecheck/build workflow and need application-specific integration/native jobs as they evolve.
 

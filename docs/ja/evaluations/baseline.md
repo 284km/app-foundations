@@ -1,6 +1,7 @@
 ---
-translation_source_sha256: f70dbff9e07484b5181ca96f46aef01742f717f8628c158570047dcb2b33f0c2
+translation_source_sha256: 253752d8cd0d1fdcffc48552d11853565c32cc6b824c14e9fc6b295141b8c62b
 ---
+
 
 
 # 初期基盤の検証記録
@@ -11,7 +12,7 @@ translation_source_sha256: f70dbff9e07484b5181ca96f46aef01742f717f8628c158570047
 
 Next.js本番ビルド、デスクトップのReact／Viteビルド、モバイルのiOS／Android JavaScript出力、Expoの依存互換性、モバイルの型検査、macOS arm64でのCargo checkは成功しました。JavaScript出力はネイティブビルドではありません。
 
-macOS arm64のネイティブreleaseビルド、DBを伴うAPIのCRUD・エラー・CORS・契約検証、本番デモAPIの無効化、3種類の独立出力・契約差分・10組の英日ドキュメント検査も成功しました。公開ソースとGit履歴の検査は最終確認中です。
+macOS arm64のネイティブreleaseビルド、DBを伴うAPIのCRUD・エラー・CORS・契約検証、本番デモAPIの無効化、3種類の独立出力・契約差分・10組の英日ドキュメント検査も成功しました。公開対象107個のテキストファイルを確認し、公開内容のポリシー検査とGitleaksによるスナップショット・Git履歴の検査も成功しました。Gitleaksで秘密情報は検出されませんでした。
 
 CIでは管理元、独立出力、API、本番デモ無効化、Linux／macOS／Windowsのデスクトップビルドを定義しています。定義の存在は成功実績ではないので、実際のrunを確認します。出力先には型検査とビルドの基本CIを含め、実アプリで統合・ネイティブの検証を追加します。
 
